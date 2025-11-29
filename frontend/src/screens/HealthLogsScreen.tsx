@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TextInput, Alert, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { apiGet, apiPost } from '@/api/client';
 import GradientBackground from '@/components/GradientBackground';
+import { RootStackParamList } from 'App';
 
 type Log = {
   id: number;
@@ -11,10 +14,14 @@ type Log = {
   logged_at?: string;
 };
 
+type HealthLogsScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'HealthLogs'>;
+
+
 export default function HealthLogsScreen() {
   const [items, setItems] = useState<Log[]>([]);
   const [value, setValue] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigation = useNavigation<HealthLogsScreenNavigationProp>();
 
   const load = async () => {
     setLoading(true);
@@ -58,7 +65,12 @@ export default function HealthLogsScreen() {
           <Text style={styles.title}>体重日志</Text>
           <Text style={styles.subtitle}>记录您的体重变化</Text>
         </View>
-        <Text style={styles.countBadge}>{items.length} 条</Text>
+        <View style={styles.headerActions}>
+            <Text style={styles.countBadge}>{items.length} 条</Text>
+            <TouchableOpacity style={styles.trendsButton} onPress={() => navigation.navigate('Trends')}>
+                <Text style={styles.trendsButtonText}>查看趋势</Text>
+            </TouchableOpacity>
+        </View>
       </View>
 
       <View style={styles.inputCard}>
@@ -132,6 +144,11 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingBottom: 16,
   },
+  headerActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
   title: { 
     fontSize: 28, 
     fontWeight: '800', 
@@ -151,6 +168,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 12,
+  },
+  trendsButton: {
+    backgroundColor: '#3B82F6',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 12,
+  },
+  trendsButtonText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '700',
   },
   inputCard: {
     backgroundColor: '#FFFFFF',
