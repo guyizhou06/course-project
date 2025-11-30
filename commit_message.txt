@@ -1,0 +1,11 @@
+feat(profile): Implement "My" (Profile) screen and '/me' endpoint
+
+This commit implements the user profile screen and the corresponding backend endpoint.
+
+Changes include:
+- feat(backend): Added 'UserOut' schema in schemas.py for user data output.
+- feat(backend): Implemented 'GET /me' endpoint in auth.py to fetch current user details.
+- feat(frontend): Created 'ProfileScreen.tsx' with user info display, theme toggle, and logout button.
+- feat(frontend): Added 'ProfileScreen' to navigation in App.tsx.
+- feat(frontend): Updated 'My' button in HealthTrackerDashboard.tsx to navigate to 'ProfileScreen'.
+- feat(frontend): Implemented logout functionality in ProfileScreen.

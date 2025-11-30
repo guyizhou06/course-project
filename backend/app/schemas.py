@@ -13,6 +13,14 @@ class Token(BaseModel):
     token_type: str = "bearer"
 
 
+class UserOut(BaseModel):
+    id: int
+    email: EmailStr
+
+    class Config:
+        from_attributes = True
+
+
 class HealthLogBase(BaseModel):
     metric_type: str = "weight"
     value1: float

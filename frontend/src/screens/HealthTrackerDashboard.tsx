@@ -346,7 +346,7 @@ export default function HealthTrackerDashboard({ navigation }: Props) {
           <Text style={[styles.navLabel, { color: colors.textSecondary }]}>统计</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Profile')}>
           <Ionicons name="person" size={24} color={colors.textSecondary} />
           <Text style={[styles.navLabel, { color: colors.textSecondary }]}>我的</Text>
         </TouchableOpacity>
