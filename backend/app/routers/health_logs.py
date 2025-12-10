@@ -127,3 +127,38 @@ def get_trends(
         weekly_change=weekly_change if points else None,
         trend=trend,
     )
+
+@router.get("/stats/summary")
+def get_stats_summary(
+    days: int = 30,
+    db: Session = Depends(get_db),
+    user=Depends(get_current_user),
+):
+    """获取统计摘要"""
+    since_dt = datetime.utcnow() - timedelta(days=days)
+    
+    # 获取所有指标数据
+    metrics = ['weight', 'heartRate', 'steps', 'sleep', 'water']
+    stats = {}
+    
+    for metric in metrics:
+        records = db.query(HealthLog).filter(
+            HealthLog.user_id == user.id,
+            HealthLog.metric_type == metric,
+            HealthLog.logged_at >= since_dt,
+        ).all()
+        
+        if records:
+            values = [r.value1 for r in records]
+            stats[metric] = {
+                "count": len(values),
+                "avg": sum(values) / len(values),
+                "min": min(values),
+                "max": max(values),
+                "latest": values[-1],
+                "trend": "up" if len(values) >= 2 and values[-1] > values[0] else "down" if values[-1] < values[0] else "stable"
+            }
+        else:
+            stats[metric] = None
+    
+    return stats

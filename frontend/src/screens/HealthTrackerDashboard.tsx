@@ -332,7 +332,7 @@ export default function HealthTrackerDashboard({ navigation }: Props) {
 
         <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('HealthLogs')}>
           <Ionicons name="calendar" size={24} color={colors.textSecondary} />
-          <Text style={[styles.navLabel, { color: colors.textSecondary }]}>日历</Text>
+          <Text style={[styles.navLabel, { color: colors.textSecondary }]}>日志</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.navAddButton}>
@@ -341,7 +341,7 @@ export default function HealthTrackerDashboard({ navigation }: Props) {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('HealthLogs')}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Statistics')}>
           <Ionicons name="bar-chart" size={24} color={colors.textSecondary} />
           <Text style={[styles.navLabel, { color: colors.textSecondary }]}>统计</Text>
         </TouchableOpacity>
