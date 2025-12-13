@@ -254,6 +254,13 @@ export default function DashboardScreen({ navigation }: Props) {
           variant="tertiary"
           onPress={() => {/* TODO: 导航到睡眠页面 */}}
         />
+        <HealthCard
+          title="健康商城"
+          subtitle="购买健康产品"
+          iconType="store"
+          variant="tertiary"
+          onPress={() => navigation.navigate('Store')}
+        />
       </View>
 
       <View style={styles.trendCard}>

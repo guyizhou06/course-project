@@ -300,6 +300,16 @@ export default function HealthTrackerDashboard({ navigation }: Props) {
 
             <TouchableOpacity
               style={[styles.actionButton, { backgroundColor: colors.backgroundCard }]}
+              onPress={() => navigation.navigate('Store')}
+            >
+              <Ionicons name="cart-outline" size={24} color={colors.water} />
+              <Text style={[styles.actionButtonText, { color: colors.text }]}>
+                健康商城
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={[styles.actionButton, { backgroundColor: colors.backgroundCard }]}
               onPress={() => navigation.navigate('Achievements')}
             >
               <Ionicons name="trophy" size={24} color={colors.accent} />

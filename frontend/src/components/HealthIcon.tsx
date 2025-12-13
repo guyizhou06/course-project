@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, StyleSheet, ViewStyle } from 'react-native';
 
 interface HealthIconProps {
-  type: 'heart' | 'weight' | 'activity' | 'sleep' | 'nutrition' | 'assistant';
+  type: 'heart' | 'weight' | 'activity' | 'sleep' | 'nutrition' | 'assistant' | 'store';
   size?: number;
   style?: ViewStyle;
 }
@@ -22,6 +22,8 @@ const HealthIcon: React.FC<HealthIconProps> = ({ type, size = 24, style }) => {
         return { uri: 'https://cdn-icons-png.flaticon.com/512/3239/3239945.png' };
       case 'assistant':
         return { uri: 'https://cdn-icons-png.flaticon.com/512/3522/3522047.png' };
+      case 'store':
+        return { uri: 'https://cdn-icons-png.flaticon.com/512/5208/5208813.png' };
       default:
         return { uri: 'https://cdn-icons-png.flaticon.com/512/1077/1077034.png' };
     }

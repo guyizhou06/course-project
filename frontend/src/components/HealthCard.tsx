@@ -5,7 +5,7 @@ import HealthIcon from './HealthIcon';
 interface HealthCardProps {
   title: string;
   subtitle: string;
-  iconType: 'heart' | 'weight' | 'activity' | 'sleep' | 'nutrition' | 'assistant';
+  iconType: 'heart' | 'weight' | 'activity' | 'sleep' | 'nutrition' | 'assistant' | 'store';
   onPress?: () => void;
   variant?: 'primary' | 'secondary' | 'tertiary';
   backgroundImage?: string;
